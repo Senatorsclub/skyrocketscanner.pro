@@ -79,5 +79,43 @@
   <p>SignalCore-4™ Active<br />Infinity Arms™ Engaged<br />Whisper Genesis Deck™ Scanning</p>
 </div>
 
-  </body>
-  </html>
+<script>
+  const signals = [
+    "GRYP: Trump Grid Watch | +9.7%",
+    "RXRX: AI Biotech Momentum | +16.2%",
+    "MODV: Short Squeeze Trigger | +40.7%",
+    "CRCL: Post-IPO Surge | +280%",
+    "VTAK: Whisper Coil Detected | +12.4%"
+  ];
+
+  let current = 0;
+  const container = document.querySelectorAll('.signal');
+
+  function rotateSignals() {
+    container.forEach((el, i) => {
+      el.textContent = signals[(current + i) % signals.length];
+    });
+    current = (current + 1) % signals.length;
+  }
+
+  setInterval(rotateSignals, 10000);
+
+  document.querySelectorAll('.signal').forEach(signal => {
+    signal.addEventListener('mouseenter', () => {
+      signal.style.backgroundColor = '#111822';
+    });
+    signal.addEventListener('mouseleave', () => {
+      signal.style.backgroundColor = '#111';
+    });
+  });
+
+  const systemCard = document.querySelector('.card:last-child');
+  const time = new Date().toLocaleTimeString();
+  const stamp = document.createElement('p');
+  stamp.textContent = `⏱️ Last Scan: ${time}`;
+  stamp.style.fontSize = '0.9rem';
+  stamp.style.color = '#999';
+  systemCard.appendChild(stamp);
+</script>
+
+
