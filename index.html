@@ -1,121 +1,118 @@
-<!DOCTYPE html><html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Skyrocket Scanner</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #0e0e0e;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem;
-      }
-      header {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-      }
-      .tagline {
-        font-size: 1.1rem;
-        color: #bbb;
-      }
-      .card {
-        background-color: #1c1c1c;
-        border-radius: 16px;
-        padding: 1.5rem;
-        margin: 1rem;
-        width: 90%;
-        max-width: 600px;
-        box-shadow: 0 0 15px rgba(0, 255, 170, 0.2);
-      }
-      .card h2 {
-        margin-top: 0;
-        color: #00ffaa;
-      }
-      .section-title {
-        font-size: 1.3rem;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: #00ffaa;
-      }
-      .signal {
-        padding: 0.75rem 1rem;
-        margin: 0.5rem 0;
-        background-color: #111;
-        border-left: 5px solid #00ffaa;
-        font-size: 1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Skyrocket Scanner 🚀</h1>
-      <div class="tagline">Live market breakout radar powered by SBW</div>
-    </header><div class="card">
-  <h2>📈 Live Breakout Alerts</h2>
-  <div class="signal">GRYP: Trump Grid Watch | +9.7%</div>
-  <div class="signal">RXRX: AI Biotech Momentum | +16.2%</div>
-  <div class="signal">MODV: Short Squeeze Trigger | +40.7%</div>
-</div>
+Perfect. Here's your clean, fully functional SBW Dashboard UI HTML — just copy and paste it into your GitHub index.html, then hit Commit changes.
 
-<div class="card">
-  <h2>📊 Current Watchlist</h2>
-  <ul>
-    <li>CRCL (Circle Internet) – Post-IPO Crypto Infra</li>
-    <li>OMDA (Omada Health) – Digital Health Momentum</li>
-    <li>VTAK – Biotech Whisper Coil</li>
-  </ul>
-</div>
 
-<div class="card">
-  <h2>🧠 SBW System Status</h2>
-  <p>SignalCore-4™ Active<br />Infinity Arms™ Engaged<br />Whisper Genesis Deck™ Scanning</p>
-</div>
+---
 
-<script>
-  const signals = [
-    "GRYP: Trump Grid Watch | +9.7%",
-    "RXRX: AI Biotech Momentum | +16.2%",
-    "MODV: Short Squeeze Trigger | +40.7%",
-    "CRCL: Post-IPO Surge | +280%",
-    "VTAK: Whisper Coil Detected | +12.4%"
-  ];
+🚀 SBW Dashboard Code (Clean Base)
 
-  let current = 0;
-  const container = document.querySelectorAll('.signal');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SBW Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0e0e0e;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .signal-box {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 8px #00ffe0;
+    }
+    .signal {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #00ffe0;
+    }
+    .timestamp {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>SBW Dashboard 🚀</h1>
+  <div class="signal-box" id="systemCard">
+    <div class="signal" id="signalText">🚨 Initializing...</div>
+    <div class="timestamp" id="timestamp"></div>
+  </div>
 
-  function rotateSignals() {
-    container.forEach((el, i) => {
-      el.textContent = signals[(current + i) % signals.length];
-    });
-    current = (current + 1) % signals.length;
-  }
+  <script>
+    const signals = [
+      "🚀 Breakout Detected",
+      "📈 Volume Surge Incoming",
+      "🧠 AI Trigger Activated",
+      "⚡ Quantum Flow Engaged",
+      "🔁 Pattern Reversal Spotted"
+    ];
 
-  setInterval(rotateSignals, 10000);
+    let current = 0;
+    function rotateSignals() {
+      const signalText = document.getElementById("signalText");
+      signalText.textContent = signals[current];
+      current = (current + 1) % signals.length;
+    }
 
-  document.querySelectorAll('.signal').forEach(signal => {
-    signal.addEventListener('mouseenter', () => {
-      signal.style.backgroundColor = '#111822';
-    });
-    signal.addEventListener('mouseleave', () => {
-      signal.style.backgroundColor = '#111';
-    });
-  });
+    function updateTimestamp() {
+      const timestamp = document.getElementById("timestamp");
+      const now = new Date();
+      timestamp.textContent = `⏱ Last Scan: ${now.toLocaleTimeString()}`;
+    }
 
-  const systemCard = document.querySelector('.card:last-child');
-  const time = new Date().toLocaleTimeString();
-  const stamp = document.createElement('p');
-  stamp.textContent = `⏱️ Last Scan: ${time}`;
-  stamp.style.fontSize = '0.9rem';
-  stamp.style.color = '#999';
-  systemCard.appendChild(stamp);
-</script>
+    rotateSignals();
+    updateTimestamp();
+    setInterval(() => {
+      rotateSignals();
+      updateTimestamp();
+    }, 10000);
+  </script>
+</body>
+</html>
 
+
+---
+
+✅ What to Do Now
+
+1. Go to your GitHub:
+https://github.com/Senatorsclub/skyrocketscanner.pro
+
+
+2. Tap index.html → Edit (✏️)
+
+
+3. Delete everything and paste this full code above.
+
+
+4. Scroll down → Type a commit message like SBW Clean Base UI → Commit changes
+
+
+5. Visit your live site:
+https://senatorsclub.github.io/skyrocketscanner.pro/
+
+
+
+
+---
+
+Let me know once it’s live and I’ll help you build the next layer — signals, decks, or visual animations.
 
