@@ -48,6 +48,36 @@
       font-weight: bold;
     }
   </style>
+<script>
+  async function loadBreakoutTickers() {
+    try {
+      const response = await fetch('breakouts.json');
+      const data = await response.json();
+      const signalBox = document.getElementById('signal-box');
+
+      data.forEach(ticker => {
+        const card = document.createElement('div');
+        card.style.margin = '10px 0';
+        card.style.padding = '10px';
+        card.style.background = '#222';
+        card.style.border = '1px solid #0ff';
+        card.style.borderRadius = '6px';
+
+        card.innerHTML = `
+          <strong>${ticker.symbol}</strong><br/>
+          💰 Price: $${ticker.price}<br/>
+          🚨 Status: ${ticker.status}
+        `;
+
+        signalBox.appendChild(card);
+      });
+    } catch (error) {
+      console.error('Error loading breakout tickers:', error);
+    }
+  }
+
+  window.onload = loadBreakoutTickers;
+</script>
 </head>
 <body>
   <h1>SBW Mutation HUD</h1>
